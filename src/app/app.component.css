@@ -1,35 +1,18 @@
-.app-container {
-  background: #FFF;
+/* .app-container {
   height: 100%;
   width: 100%;
-}
+} */
 
-.sidenav-container{
-  height: 80%;
-  width: 100%;
-  background-image: url(src\assets\img\pexels-photo-834892.jpeg);
-}
-
-.header-container {
-  display: flex;
-  justify-content: center;
-  z-index: 2;
-  padding: 200px;
-}
-
-.slogan-header {
-  display: flex;
-  justify-content: center;
-  color: #FFF;
-  text-shadow: 1px 2px 5px #000000;
-  font-style: italic;
+.nav-container {
+  z-index: 1;
 }
 
 .menu-ham {
 color: #FFF;
 font-size:30px;
 cursor:pointer;
-padding: 20px;
+padding: 10px;
+position: fixed;
 }
 
 
@@ -57,7 +40,6 @@ padding: 20px;
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);

@@ -1,5 +1,5 @@
-<div class="app-container">
-<div class="sidenav-container">
+<div class="container-fluid">
+  <div class="nav-container">
   <div #mySideNav class="sidenav">
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
     <a href="#">Catalogus</a>
@@ -7,14 +7,11 @@
     <a href="#">Loan</a>
     <a href="#">My Account</a>
   </div>
-  <span class="menu-ham" (click)="openNav()">&#9776;</span>
+  <span #menuButton class="menu-ham" (click)="openNav()">&#9776;</span>
   <div class="user-nav">
     <a href="#">LOGIN</a>
     <a href="#">REGISTER</a>
     <a href="#">LOGOUT</a>
-  </div>
-  <div class="header-container">
-    <span class="slogan-header"><h1>"You're online toolbox for your everyday needs"</h1></span>
   </div>
 </div>
 <router-outlet></router-outlet>
