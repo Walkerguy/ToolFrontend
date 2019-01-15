@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.inner{
+    overflow: hidden;
+}
+
+.inner img{
+    transition: all 1.5s ease;
+}
+
+.inner:hover img{
+    transform: scale(1.2);
+}
