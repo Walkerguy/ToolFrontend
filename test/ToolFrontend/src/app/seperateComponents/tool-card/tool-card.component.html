@@ -23,14 +23,14 @@
       <!-- Subtitle -->
 
       <!-- Text -->
-      <p class="card-text">{{product.description}} </p>
+      <p class="card-text">{{product.description}}  </p>
       
       <!-- Price and rent button-->
       <div >
           <hr>
           <div>
-              <p><b>$1</b> /day</p>
-              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#rentScreen">
+              <p><b>€{{product.price}}</b> /day</p>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#rentScreen" (click)="openModal(product)">
                 Rent
               </button>
             </div>
@@ -42,25 +42,41 @@
 
 <!-- MODAL -->
 
+<!-- MODAL -->
+
 <div class="modal fade" id="rentScreen">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title">Product name</h2>
-        <button type="button" class="close" data-dismiss="modal">
-          <span>&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Description of product</p>
-      </div>
-      <div class="model-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">confirm</button>
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="width:400px; height:600px;">
+        <!-- <div class="modal-header"> -->
+          <!-- <h2 class="modal-title">{{activeProduct.name}}</h2> -->
+          <div class="pull-right" style="margin-top: 0;">
+              <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                </button>
+          </div>
+          <img src="{{activeProduct.imageUrl}}" alt="Image rent product" style="height:250px;">
+          <h2 class="modal-title text-center"><strong>{{activeProduct.name}}</strong></h2>
+        <!-- </div> -->
+        <div class="modal-body" >
+          <p>{{activeProduct.description}}</p>
+          <hr>
+
+          <p style="float: left;">Price of product per day:</p>   <p style="float: right;"> <b>€{{activeProduct.price}}</b>,- </p> 
+          <br><br>  
+          <p style="float: left;">Days you want to rent the product:</p>
+                             
+              <input type="number" id="replyNumber" min="0" step="1" data-bind="value:replyNumber" style="width:40px; float:right;"/>
+<br>
+<hr>
+<p style="float: left;">Total price:</p>
+<p style="float: right;"> <b>€7</b></p>
+        </div>
+        <div class="model-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" style="float: right;">Rent</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 
 
 
