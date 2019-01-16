@@ -1,0 +1,94 @@
+<div class="row">
+      <div class="col-md-3" style="padding-left:35px; padding-top: 35px;" 
+      *ngFor="let product of products">
+        
+        <!-- Card Wider -->
+<div class="card card-cascade wider shadow" style=" width: 15rem; height: 400px;">
+
+    <!-- Card image -->
+    <div class="view view-cascade overlay">
+      <div class="inner">
+      <img  class="card-img-top" src="{{product.imageUrl}}" alt="Card image cap">
+      </div>
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+  
+    <!-- Card content -->
+    <div class="card-body card-body-cascade text-center">
+  
+      <!-- Title -->
+      <h4 class="card-title"><strong>{{product.name}}</strong></h4>
+      <!-- Subtitle -->
+
+      <!-- Text -->
+      <p class="card-text">{{product.description}}  </p>
+      
+      <!-- Price and rent button-->
+      <div >
+          <hr>
+          <div>
+              <p><b>€{{product.price}}</b> /day</p>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#rentScreen" (click)="openModal(product)">
+                Rent
+              </button>
+            </div>
+      </div>
+    </div>
+  </div>
+      </div>
+</div>
+
+<!-- MODAL -->
+
+<!-- MODAL -->
+
+<div class="modal fade" id="rentScreen">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="width:400px; height:600px;">
+        <!-- <div class="modal-header"> -->
+          <!-- <h2 class="modal-title">{{activeProduct.name}}</h2> -->
+          <div class="pull-right" style="margin-top: 0;">
+              <button type="button" class="close" data-dismiss="modal">
+                  <span>&times;</span>
+                </button>
+          </div>
+          <img src="{{activeProduct.imageUrl}}" alt="Image rent product" style="height:250px;">
+          <h2 class="modal-title text-center"><strong>{{activeProduct.name}}</strong></h2>
+        <!-- </div> -->
+        <div class="modal-body" >
+          <p>{{activeProduct.description}}</p>
+          <hr>
+
+          <p style="float: left;">Price of product per day:</p>   <p style="float: right;"> <b>€{{activeProduct.price}}</b>,- </p> 
+          <br><br>  
+          <p style="float: left;">Days you want to rent the product:</p>
+                             
+              <input type="number" id="replyNumber" min="0" step="1" data-bind="value:replyNumber" style="width:40px; float:right;"/>
+<br>
+<hr>
+<p style="float: left;">Total price:</p>
+<p style="float: right;"> <b>€7</b></p>
+        </div>
+        <div class="model-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" style="float: right;">Rent</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
