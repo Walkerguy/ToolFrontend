@@ -5,14 +5,24 @@
     <a href="#">Catalogus</a>
     <a href="#">Rent</a>
     <a href="#">Loan</a>
-    <a href="#">My Account</a>
+    <a *ngIf="authService.loggedIn()" routerLink="/user/profile">My Account</a>  
   </div>
   <span #menuButton class="menu-ham" (click)="openNav()">&#9776;</span>
   <div class="user-nav">
-    <a href="#">LOGIN</a>
-    <a href="#">REGISTER</a>
-    <a href="#">LOGOUT</a>
+    <a *ngIf="!authService.loggedIn()" routerLink="/user/login">LOGIN</a>
+    <a *ngIf="!authService.loggedIn()" routerLink="/user/register">REGISTER</a> <!---*ngIf="!authService.loggedIn()" -->
+    <a *ngIf="authService.loggedIn()" (click)="onLogOutClick()">LOGOUT</a>
   </div>
 </div>
-<router-outlet></router-outlet>
+<div>
+  <div class="flex-container" style="display:flex; justify-content: center;">
+    <div class="container" style=" position:fixed; width: 30%; font-size: 20px; text-align: center; padding: 100px;">
+        <flash-messages></flash-messages>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
 </div>
+</div>
+
+
+<!--- Voeg && authService.isAdmin() toe aan een route om deze alleen maar voor Admins beschikbaar te maken (icm met aanpassing AuthGuard in app.module!)-->

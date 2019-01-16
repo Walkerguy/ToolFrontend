@@ -1,7 +1,6 @@
-/* .app-container {
-  height: 100%;
-  width: 100%;
-} */
+.container-fluid {
+  padding: 0;
+}
 
 .nav-container {
   z-index: 1;
@@ -13,6 +12,12 @@ font-size:30px;
 cursor:pointer;
 padding: 10px;
 position: fixed;
+transform: scale(1);
+transition: 0.2s ease-in-out;
+}
+
+.menu-ham:hover{
+  transform: scale(1.1);
 }
 
 
@@ -24,16 +29,19 @@ position: fixed;
 
 .user-nav > a {
   color: #FFF;
-  padding: 20px;
+  padding: 10px;
+  font-size: 20px;
   transition: 0.3s;
   transform: scale(1);
   text-decoration: none;
   display: inline-block;
+  font-family: 'Abel', sans-serif;
   
 }
 
 .user-nav a:hover {
   transform: scale(1.15);
+  text-decoration: underline;
 }
 
 .sidenav {
@@ -43,6 +51,7 @@ position: fixed;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
+    font-family: 'Abel', sans-serif;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -61,6 +70,8 @@ position: fixed;
   
   .sidenav a:hover {
     transform: scale(1.05);
+    text-decoration: underline;
+    background-color: rgba(0, 0, 0, 0.6);
   }
   
   .sidenav .closebtn {
@@ -69,6 +80,11 @@ position: fixed;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+  }
+
+  .sidenav .closebtn:hover{
+    background: none;
+    transform: none;
   }
   
   @media screen and (max-height: 450px) {

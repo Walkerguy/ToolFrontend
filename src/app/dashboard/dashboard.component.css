@@ -7,35 +7,48 @@
     z-index: -1;
 }
 
+
 .background-container {
   height: 80%;
   width: 100%;
   background-image: url(src\assets\img\pexels-photo-1029243.jpeg);
-  
+  filter: blur(2px);
 }
 
+
 .header-container {
+    height: 80%;
+    width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 200px;
-    height: 100%;
-    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
   }
   
   .slogan-header {
     display: flex;
     justify-content: center;
+    text-align: center;
+    padding: 20px;
     color: #FFF;
     text-shadow: 1px 2px 5px #000000;
-    font-style: italic;
+    font-family: 'Abel', sans-serif;
   }
+
+  @media screen and (max-width: 800px) {
+      .slogan-header > h1 {font-size: 25px;}
+  }
+
 
 .container-fluid{
     display: flex;
     flex-direction: row;
     justify-content: center;
     padding: 100px;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .grid-container {
@@ -46,6 +59,7 @@
 }
 
 .tile {
+    background-color: rgba(255, 255, 255, 1);
     display: flex;
     justify-content: center;
     flex-direction: row;
