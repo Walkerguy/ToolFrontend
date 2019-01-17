@@ -9,15 +9,21 @@ import { Product } from '../models/product';
   providedIn: 'root'
 })
 export class ProductService {
-  product: Product;
+  product: any;
   localUrl: string = 'http://localhost:3000/api/products';
-  deployUrl: string = '';
+  catalogUrl: string = 'https://spatoolbackend.herokuapp.com/api/products';
+  deployUrl: string = 'https://spaverhuurbackend.herokuapp.com/api/products';
 
   constructor(private _http : Http) { }
 
 
 getProducts() {
   return this._http.get(this.localUrl)
+  .map(res=>res.json());
+}
+
+getProductsFromCatalog() {
+  return this._http.get(this.catalogUrl)
   .map(res=>res.json());
 }
 

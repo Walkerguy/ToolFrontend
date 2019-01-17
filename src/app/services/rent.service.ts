@@ -4,33 +4,33 @@ import { Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Product } from '../models/product';
-import {Loan} from '../models/loan'
+import {Rent} from '../models/rent'
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoanService {
-  loan: Loan;
+export class RentService {
+  rent: Rent;
   product: Product;
-  localUrl: string = 'http://localhost:3000/api/loans';
+  localUrl: string = 'http://localhost:3000/api/rents';
   deployUrl: string = '';
 
   constructor(private _http : Http) { }
 
-  getLoans() {
+  getRents() {
     return this._http.get(this.localUrl)
     .map(res=>res.json());
   }
   
-  getLoanById(_id:string) {
+  getRentById(_id:string) {
    return this._http.get(this.localUrl + '/' + _id)
    .map(res=>res.json());
   }
   
-  addLoan(loan){
+  addRent(rent){
    let headers = new Headers();
    headers.append('Content-Type','application/json');
-   return this._http.post(this.localUrl, loan, {headers: headers})
+   return this._http.post(this.localUrl, rent, {headers: headers})
    .map(res => res.json());
   }
 
@@ -43,7 +43,7 @@ export class LoanService {
   }
   
   
-  deleteLoan(_id:string){
+  deleteRent(_id:string){
   
      let headers = new Headers();
      headers.append('Content-Type','application/json');

@@ -2,9 +2,9 @@
   <div class="nav-container">
   <div #mySideNav class="sidenav">
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-    <a href="#">Catalogus</a>
-    <a href="#">Rent</a>
-    <a href="#">Loan</a>
+    <a href="#">Catalog</a>
+    <a *ngIf="authService.loggedIn()" routerLink="/rent">Rent</a>
+    <a *ngIf="authService.loggedIn()" routerLink="/loan">Loan</a>
     <a *ngIf="authService.loggedIn()" routerLink="/user/profile">My Account</a>  
   </div>
   <span #menuButton class="menu-ham" (click)="openNav()">&#9776;</span>

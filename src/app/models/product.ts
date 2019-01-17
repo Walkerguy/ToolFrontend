@@ -3,13 +3,17 @@ export class Product {
     public name: string;
     public category: string;
     public description: string;
-    public imageUrl: string;
+    public imageurl: string;
+    public costPerDay: string;
+    public lend: boolean;
 
-    constructor(name: string, category: string, description: string, imageUrl: string)
+    constructor(name: string, category: string, description: string, imageurl: string, costPerDay: string, lend: boolean)
     {
         this.name = name;
         this.category = category;
         this.description = description;
-        this.imageUrl = imageUrl;
+        this.imageurl = imageurl;
+        this.costPerDay = costPerDay;
+        this.lend = lend;
     }
 }
