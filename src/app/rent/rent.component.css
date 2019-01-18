@@ -6,3 +6,26 @@
     justify-content: center;
     
   }
+
+  .container {
+    padding: 50px;
+  }
+
+  .form-inline{
+    justify-content: center;
+    padding: 50px;
+  }
+  .row{
+    justify-content: center;
+  }
+  .inner{
+    overflow: hidden;
+}
+
+.inner img{
+    transition: all 1.5s ease;
+}
+
+.inner:hover img{
+    transform: scale(1.2);
+}
