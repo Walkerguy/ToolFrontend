@@ -25,6 +25,8 @@ import {RentService} from './services/rent.service';
 import {AuthGuard} from './guards/auth.guard';
 import { AuthAdminGuard } from './guards/auth-admin.guard';
 import { from } from 'rxjs';
+import { ProductFilterPipe } from './product-filter-pipe';
+// import { FilterPipe} from './filter.pipe';
 
 
 
@@ -52,6 +54,7 @@ const appRoutes : Routes = [
     ProfileComponent,
     RentComponent,
     LoanComponent,
+    ProductFilterPipe,
 
   ],
   imports: [

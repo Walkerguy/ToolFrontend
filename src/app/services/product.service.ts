@@ -18,7 +18,7 @@ export class ProductService {
 
 
 getProducts() {
-  return this._http.get(this.localUrl)
+  return this._http.get(this.deployUrl)
   .map(res=>res.json());
 }
 
@@ -28,14 +28,14 @@ getProductsFromCatalog() {
 }
 
 getProductById(_id:string) {
- return this._http.get(this.localUrl + '/' + _id)
+ return this._http.get(this.deployUrl + '/' + _id)
  .map(res=>res.json());
 }
 
 addProduct(product){
  let headers = new Headers();
  headers.append('Content-Type','application/json');
- return this._http.post(this.localUrl, product, {headers: headers})
+ return this._http.post(this.deployUrl, product, {headers: headers})
  .map(res => res.json());
 }
 
@@ -44,6 +44,6 @@ deleteProduct(_id:string){
 
    let headers = new Headers();
    headers.append('Content-Type','application/json');
-   return this._http.delete(this.localUrl + '/' + _id, {headers: headers})
+   return this._http.delete(this.deployUrl + '/' + _id, {headers: headers})
  }
 }

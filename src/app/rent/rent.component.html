@@ -1,19 +1,20 @@
-
+<!-- Search -->
     <div class="container" >
-        <form class="form-inline">
-          <i class="fas fa-search" aria-hidden="true"></i>
-          <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search for item..." aria-label="Search">
-        </form>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search by name..."
+          style="width: 100%" [(ngModel)]="searchTerm">
+        </div>
+<!------------------------------------------------------------------------>
 
-        <div *ngIf="products" class="row">  <!--Hier een Grid van maken-->
-          <div class="col-md-3" *ngFor="let p of products">
+        <div *ngIf="products" class="grid-container">  <!--Hier een Grid van maken-->
+          <div class="grid-item" *ngFor="let p of products | productFilter: searchTerm">
                   <!-- Card Wider -->
-            <div class="card card-cascade wider shadow" style=" width: 15rem; height: 400px;">
+            <div class="card card-cascade wider shadow" style=" width: 15rem; height: 450px;">
       
               <!-- Card image -->
               <div class="view view-cascade overlay">
                 <div class="inner">
-                  <img class="card-img-top" src={{p.imageurl}} alt="Card image cap">
+                  <img class="card-img-top" src={{p.imageurl}} onerror="this.src='http://www.pngall.com/wp-content/uploads/2016/07/Tool.png'">
                 </div>
                 <a href="#!">
                   <div class="mask rgba-white-slight"></div>
@@ -44,7 +45,7 @@
       
         <!-- MODAL -->
 
-        </div>
+  
 
         <div *ngIf="activeProduct" class="modal" id="rentScreen">
             <div class="modal-dialog modal-dialog-centered">

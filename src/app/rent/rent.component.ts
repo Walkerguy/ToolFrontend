@@ -13,6 +13,7 @@ export class RentComponent implements OnInit {
   public inputNum: number;
   public totalCost: number = 0;
   public btnEnabled = true;
+  public searchTerm: string;
 
 
   constructor(private productService:ProductService){
