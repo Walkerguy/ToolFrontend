@@ -10,7 +10,7 @@ export class AuthService {
   authToken: any;
   user: any;
   localUrl : string = 'http://localhost:3000/api/users';
-  productionUrl: '';
+  deployUrl: string = 'https://spaverhuurbackend.herokuapp.com/api/users';
 
   constructor(private http: Http) { }
 

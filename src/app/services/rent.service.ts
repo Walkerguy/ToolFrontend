@@ -13,7 +13,10 @@ export class RentService {
   rent: Rent;
   product: Product;
   localUrl: string = 'http://localhost:3000/api/rents';
-  deployUrl: string = '';
+  localUsersUrl : string = 'http://localhost:3000/api/users/rent';
+  
+  deployUrl: string = 'https://spaverhuurbackend.herokuapp.com/api/rents';
+  deployUsersUrl: string = 'https://spaverhuurbackend.herokuapp.com/api/users/rent';
 
   constructor(private _http : Http) { }
 
@@ -27,10 +30,17 @@ export class RentService {
    .map(res=>res.json());
   }
   
-  addRent(rent){
+  addRent(new_rent){
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    return this._http.post(this.localUrl, new_rent, {headers: headers})
+    .map(res => res.json());
+   }
+
+  addRentToUser(rent, id:string){
    let headers = new Headers();
    headers.append('Content-Type','application/json');
-   return this._http.post(this.localUrl, rent, {headers: headers})
+   return this._http.put(this.localUsersUrl + '/' + id, rent, {headers: headers})
    .map(res => res.json());
   }
 

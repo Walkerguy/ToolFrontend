@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ProductService } from '../services/product.service';
+import { AuthService } from '../services/auth.service';
+import { RentService } from '../services/rent.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rent',
@@ -9,13 +13,16 @@ import { ProductService } from '../services/product.service';
 })
 export class RentComponent implements OnInit {
   products: Product[];
+  new_Rent: any;
   public activeProduct: Product;
   public inputNum: number;
-  public totalCost: number = 0;
+  public totalCost: number;
   public btnEnabled = true;
 
+  user_id: any;
 
-  constructor(private productService:ProductService){
+
+  constructor(private productService:ProductService, private authService: AuthService, private rentService:RentService, private flashMessage: FlashMessagesService, private router:Router){
   }
   
   ngDoCheck(){
@@ -31,17 +38,58 @@ export class RentComponent implements OnInit {
     this.products = res;
     console.log(this.products); 
    })
+
+   this.authService.getProfile().subscribe(profile => {
+    this.user_id = profile.user._id;
+    console.log(this.user_id);
+    console.log(profile.user);
+    
+   })
+   
  } 
 
   
- public calculateTotal(): number {
-   return this.totalCost  = this.activeProduct.inputNum * this.activeProduct.costPerDay;
+ public calculateTotal(){
+  this.totalCost  = this.inputNum * this.activeProduct.costPerDay;
+  console.log(this.totalCost)
  }
-  
+
+
+
  public openModal(product): void{ 
    // Copying object reference so we dont modify the original
    this.activeProduct = Object.assign({}, product)
-   this.totalCost = 0;
+   let totalCost = 0;
    this.inputNum = 0;
    console.log(this.activeProduct) 
-} } 
+} 
+
+onRentSubmit(){
+this.calculateTotal()    
+  const new_rent = {
+  products: this.activeProduct._id, 
+  daysRented: this.inputNum,
+  totalPrice: this.totalCost 
+ 
+}
+this.rentService.addRent(new_rent).subscribe(rent => {
+  if (rent) {
+    const id = this.user_id
+    this.rentService.addRentToUser(rent, id).subscribe(user => {
+    if (user) {
+    this.flashMessage.show("Rent added!", {cssClass: 'alert-success', timeout: 3000});
+    this.router.navigate(['/']);
+    
+} else {
+    this.flashMessage.show("Failed to add!", {cssClass: 'alert-danger', timeout: 3000});
+  }
+
+});
+
+}
+
+} 
+
+);
+}
+}

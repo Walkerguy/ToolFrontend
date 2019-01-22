@@ -67,17 +67,18 @@
                     <p style="float: right;"> <b>€{{activeProduct.costPerDay}}</b>,- </p>
                     <br><br>
                     <p style="float: left;">Days you want to rent the product:</p>
-                    <input type="number" min="0" [(ngModel)]="inputNum" style="width:40px; float:right;" />
+                    <input type="number" min="0" [(ngModel)]="inputNum" name="inputNum" style="width:40px; float:right;" />
                     <br>
                     <hr>
                     <p style="float: left;">Total price:</p>
-                    <p style="float: right;"> <b>€{{activeProduct.costPerDay * inputNum}}</b>,-</p>
+                    <p style="float: right;"><b>€{{activeProduct.costPerDay * inputNum}}</b>,-</p>                  
                   </div>
+                  <div class="div">
+                      <button type="button" class="btn btn-success" [disabled]="btnEnabled" data-dismiss="modal" style="width: 100%" value="Submit" (click)="onRentSubmit()">Rent</button>
+                    </div>
                 </div>
            
-                <div class="div">
-                  <button type="button" class="btn btn-success" [disabled]="btnEnabled" data-dismiss="modal" style="width: 100%">Rent</button>
-                </div>
+               
               </div>
             </div>
           </div>

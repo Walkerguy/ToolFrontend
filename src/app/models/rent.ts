@@ -3,15 +3,15 @@ import { Product } from "./product";
 export class Rent {
 
     public product: Product;
-    public startRentDate: Date;
-    public endRentDate: Date;
+    public daysRented: number;
+    public totalPrice: number;
 
 
-    constructor(product: Product, startRentDate: Date, endRentDate: Date )
+    constructor(product: Product, daysRented: number, totalPrice: number )
     {
         this.product = product;
-        this.startRentDate = startRentDate;
-        this.endRentDate = endRentDate;
+        this.daysRented = daysRented;
+        this.totalPrice = totalPrice;
         
     }
 }

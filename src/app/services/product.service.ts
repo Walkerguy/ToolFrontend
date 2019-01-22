@@ -11,14 +11,18 @@ import { Product } from '../models/product';
 export class ProductService {
   product: any;
   localUrl: string = 'http://localhost:3000/api/products';
+  localUsersUrl : string = 'http://localhost:3000/api/users/product';
+
   catalogUrl: string = 'https://spatoolbackend.herokuapp.com/api/products';
   deployUrl: string = 'https://spaverhuurbackend.herokuapp.com/api/products';
+  deployUsersUrl: string = 'https://spaverhuurbackend.herokuapp.com/api/users/product';
+ 
 
   constructor(private _http : Http) { }
 
 
 getProducts() {
-  return this._http.get(this.localUrl)
+  return this._http.get(this.localUrl) 
   .map(res=>res.json());
 }
 
@@ -38,6 +42,13 @@ addProduct(product){
  return this._http.post(this.localUrl, product, {headers: headers})
  .map(res => res.json());
 }
+
+addLoanToUser(loan, id:string){
+  let headers = new Headers();
+  headers.append('Content-Type','application/json');
+  return this._http.put(this.localUsersUrl + '/' + id, loan, {headers: headers})
+  .map(res => res.json());
+ }
 
 
 deleteProduct(_id:string){
