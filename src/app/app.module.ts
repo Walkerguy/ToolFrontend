@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {Routes, RouterModule} from '@angular/router';
+import {NgxPaginationModule } from 'ngx-pagination';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FlashMessagesModule} from 'angular2-flash-messages';
@@ -64,7 +65,8 @@ const appRoutes : Routes = [
     AngularFontAwesomeModule,
     FormsModule,
     HttpModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [ProductService,RentService,ValidateService, AuthService, AuthGuard, AuthAdminGuard],
   bootstrap: [AppComponent]

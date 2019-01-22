@@ -7,7 +7,7 @@
 <!------------------------------------------------------------------------>
 
         <div *ngIf="products" class="grid-container">  <!--Hier een Grid van maken-->
-          <div class="grid-item" *ngFor="let p of products | productFilter: searchTerm">
+          <div class="grid-item" *ngFor="let p of products | productFilter: searchTerm  | paginate: {itemsPerPage: 8, currentPage: c }">
                   <!-- Card Wider -->
             <div class="card card-cascade wider shadow" style=" width: 15rem; height: 450px;">
       
@@ -20,7 +20,7 @@
                   <div class="mask rgba-white-slight"></div>
                 </a>
               </div>
-      
+
               <!-- Card content -->
               <div class="card-body card-body-cascade text-center">
       
@@ -42,10 +42,14 @@
             </div>
           </div>
         </div>
-      
-        <!-- MODAL -->
 
-  
+        <pagination-controls class="myPagination justify-content-center"
+          (pageChange)="c = $event">
+        </pagination-controls>
+
+     
+
+        <!-- MODAL -->
 
         <div *ngIf="activeProduct" class="modal" id="rentScreen">
             <div class="modal-dialog modal-dialog-centered">
@@ -77,10 +81,10 @@
                 </div>
            
                 <div class="div">
-                  <button type="button" class="btn btn-success" [disabled]="btnEnabled" data-dismiss="modal" style="width: 100%">Rent</button>
+                  <button type="button" class="btn btn-success" [disabled]="btnDisabled" data-dismiss="modal" style="width: 100%">Rent</button>
                 </div>
               </div>
             </div>
           </div>
-
- 
+        </div>
+         

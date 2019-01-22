@@ -12,7 +12,7 @@ export class RentComponent implements OnInit {
   public activeProduct: Product;
   public inputNum: number;
   public totalCost: number = 0;
-  public btnEnabled = true;
+  public btnDisabled = true;
   public searchTerm: string;
 
 
@@ -21,10 +21,10 @@ export class RentComponent implements OnInit {
   
   ngDoCheck(){
    if (this.inputNum > 0){
-     this.btnEnabled = false;
+     this.btnDisabled = false;
    }
    else{
-     this.btnEnabled = true;
+     this.btnDisabled = true;
    }
   }
  ngOnInit() {
