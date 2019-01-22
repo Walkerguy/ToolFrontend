@@ -7,12 +7,12 @@
 <!------------------------------------------------------------------------>
 
         <div *ngIf="products" class="grid-container">  <!--Hier een Grid van maken-->
-          <div class="grid-item" *ngFor="let p of products | productFilter: searchTerm  | paginate: {itemsPerPage: 8, currentPage: c }">
+          <div class="grid-item" *ngFor="let p of products | productFilter: searchTerm  | paginate: {itemsPerPage: 16, currentPage: c }">
                   <!-- Card Wider -->
             <div class="card card-cascade wider shadow" style=" width: 15rem; height: 450px;">
       
               <!-- Card image -->
-              <div class="view view-cascade overlay">
+              <div class="view view-cascade overlay" style="width: 100%; height: 14rem;">
                 <div class="inner">
                   <img class="card-img-top" src={{p.imageurl}} onerror="this.src='http://www.pngall.com/wp-content/uploads/2016/07/Tool.png'">
                 </div>
@@ -25,11 +25,16 @@
               <div class="card-body card-body-cascade text-center">
       
                 <!-- Title -->
-                <h4 class="card-title"><strong>{{p.name}}</strong></h4>
-                <p class="card-text">{{p.description}} </p>
+                <h5 class="card-title"><strong>{{p.name}}</strong></h5>
+
+               
+                    <p class="card-text" style=" white-space: nowrap; overflow: hidden; text-overflow:ellipsis">{{p.description}} </p>
+                
+              
+                
       
                 <!-- Price and rent button-->
-                <div>
+                <div class="priceAndRent">
                   <hr>
                   <div>
                     <p><b>€{{p.costPerDay}}</b> /day</p>
@@ -42,18 +47,18 @@
             </div>
           </div>
         </div>
-
-        <pagination-controls class="myPagination justify-content-center"
-          (pageChange)="c = $event">
-        </pagination-controls>
-
+      
+        <div class="div" style="padding-top: 23px;">
+            <pagination-controls class="myPagination text-center"
+            (pageChange)="c = $event" maxSize="4">
+          </pagination-controls>
+        </div>
      
-
         <!-- MODAL -->
 
         <div *ngIf="activeProduct" class="modal" id="rentScreen">
             <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content" style="width:400px; height:600px;">
+              <div class="modal-content" style="width:400px; ">
                 <div class="pull-right" style="margin-top: 0;">
                   <button type="button" class="close" data-dismiss="modal">
                     <span>&times;</span>
@@ -64,11 +69,12 @@
                 <h2 class="modal-title text-center"><strong>{{activeProduct.name}}</strong></h2> 
                 <div class="modal-body">
                   <div class="div">
-                    <div class="productDescription">
-                      {{activeProduct.description | slice:0:20 }}
+                    <div class="productDescription" style="overflow: auto;">
+                      {{activeProduct.description}}
                     </div>
                     <hr>
-                    <p style="float: left;">Price of product per day:</p>
+                    <div class="rightPlace">
+                      <p style="float: left;">Price of product per day:</p>
                     <p style="float: right;"> <b>€{{activeProduct.costPerDay}}</b>,- </p>
                     <br><br>
                     <p style="float: left;">Days you want to rent the product:</p>
@@ -83,8 +89,13 @@
                 <div class="div">
                   <button type="button" class="btn btn-success" [disabled]="btnDisabled" data-dismiss="modal" style="width: 100%">Rent</button>
                 </div>
+                    </div>
+                    
               </div>
             </div>
           </div>
         </div>
          
+
+
+

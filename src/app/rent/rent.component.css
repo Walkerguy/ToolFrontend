@@ -43,5 +43,19 @@
   justify-content: center;
 }
 
-
+.pagination{
+  padding-top: 20px;
+  margin-top: 20px;
+}
+.priceAndRent{
+  position: absolute;
+  bottom: 0;
+  left: 28%;
+  right: 25%;
+  padding-bottom: 13px;
+  
+}
+.descTest{
+  white-space: nowrap;
+}
 
