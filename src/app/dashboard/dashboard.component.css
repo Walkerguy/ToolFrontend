@@ -1,6 +1,6 @@
 .dashboard-container {
     width: 100%;
-    height: 80vh;
+    height: 50vh;
     position: relative;
     top: 0;
     left: 0;
@@ -9,10 +9,11 @@
 
 
 .background-container {
-  height: 80%;
+  height: 100%;
   width: 100%;
   background-image: url(src\assets\img\pexels-photo-1029243.jpeg);
-  filter: blur(2px);
+  filter: blur(5px);
+  position: fixed;
 }
 
 
@@ -44,54 +45,3 @@
   }
 
 
-/* .container-fluid{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 100px;
-    background-color: rgba(0, 0, 0, 0.8);
-} */
-
-.grid-container {
-    padding: 50px;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 50px;
-}
-
-.tile {
-    background-color: rgba(255, 255, 255, 1);
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    color: black;
-    width: 350px;
-    height: 350px;
-    box-shadow: 1px 2px 5px #000000;
-    transform: scale(1);
-    transition: 0.3s ease;
-}
-
-
-.tile:hover {
-    transform: scale(1.05);
-}
-
-fa {
-    font-size: 50px;
-    padding: 50px;
-}
-
-@media screen and (max-width: 800px) {
-    .grid-container {display: block;}
-    .tile {width: 250px;height: 250px;}
-    fa {padding: 30px;}
-
-  }
-
-@media screen and (max-width: 600px) {
-    .grid-container {display: block;}
-    .tile {width: 150px;height: 150px;}
-    fa {padding: 20px;}
-
-  }

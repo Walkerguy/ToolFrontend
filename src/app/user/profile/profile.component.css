@@ -8,25 +8,39 @@
   }
 
   .container {
-      height: 100vh;
-      width: 100%;
+
       margin: 0;
-      padding: 100px;
+      padding: 50px;
       font-family: 'Abel', sans-serif;
       font-size: 20px;
       font-weight: bold;
-      color: #FFF;
+      color: white;
+  }
+  
+  .list-group{
+      color:white;
+      font-family: 'Abel', sans-serif;
   }
 
- .list-group {
-    padding-top: 50px;
- }
-
-  .list-group-item {
+  .list-group-item{
     background-color: rgba(0, 0, 0, 0.5);
   }
+  .profile-container {
+    font-family: 'Abel', sans-serif;
+    padding-bottom: 100px;
+  }
 
 
-  .page-header {
+
+  .table {
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: 'Abel', sans-serif;
+  }
+
+
+  .header-profile {
       font-weight: bold;
+      text-decoration: underline;
+      padding-bottom:50px;
+      margin:0px;
   }

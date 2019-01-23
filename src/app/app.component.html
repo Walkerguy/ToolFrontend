@@ -2,8 +2,8 @@
   <div class="nav-container">
   <div #mySideNav class="sidenav">
     <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-    <a href="#">Catalog</a>
-    <a *ngIf="authService.loggedIn()" routerLink="/rent">Rent</a>
+    <a href="https://spatoolfrontend.herokuapp.com/">Catalog</a>
+    <a *ngIf="authService.loggedIn()" routerLink="/">Rent</a>
     <a *ngIf="authService.loggedIn()" routerLink="/loan">Loan</a>
     <a *ngIf="authService.loggedIn()" routerLink="/user/profile">My Account</a>  
   </div>
@@ -16,7 +16,7 @@
 </div>
 <div>
   <div class="flex-container" style="display:flex; justify-content: center;">
-    <div class="container" style=" position:fixed; width: 30%; font-size: 20px; text-align: center; padding: 100px; z-index: 7777;">
+    <div class="container" style=" position:fixed; width: 30%; font-size: 20px; text-align: center; padding: 100px; z-index: 7;">
         <flash-messages></flash-messages>
     </div>
   </div>

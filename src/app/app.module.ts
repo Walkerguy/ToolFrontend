@@ -6,6 +6,8 @@ import {Routes, RouterModule} from '@angular/router';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FlashMessagesModule} from 'angular2-flash-messages';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { ProductFilterPipe } from './product-filter-pipe';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,6 +54,7 @@ const appRoutes : Routes = [
     ProfileComponent,
     RentComponent,
     LoanComponent,
+    ProductFilterPipe
 
   ],
   imports: [
@@ -61,6 +64,7 @@ const appRoutes : Routes = [
     AngularFontAwesomeModule,
     FormsModule,
     HttpModule,
+    NgxPaginationModule,
     FlashMessagesModule.forRoot()
   ],
   providers: [ProductService,RentService,ValidateService, AuthService, AuthGuard, AuthAdminGuard],

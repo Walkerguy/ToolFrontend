@@ -1,86 +1,89 @@
+<!-- <hr style="width: 100vw; padding-top: 50px;"> -->
+<div class="container">
 
-    <div class="container" >
-        <form class="form-inline">
-          <i class="fas fa-search" aria-hidden="true"></i>
-          <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search for item..." aria-label="Search">
-        </form>
+  <div class="form-group search">
+    <input type="text" class="form-control" placeholder="Search by name..." style="width: 100%" [(ngModel)]="searchTerm">
+  </div>
 
-        <div *ngIf="products" class="row">  <!--Hier een Grid van maken-->
-          <div class="col-md-3" *ngFor="let p of products">
-                  <!-- Card Wider -->
-            <div class="card card-cascade wider shadow" style=" width: 15rem; height: 400px;">
-      
-              <!-- Card image -->
-              <div class="view view-cascade overlay">
-                <div class="inner">
-                  <img class="card-img-top" src={{p.imageurl}} alt="Card image cap">
-                </div>
-                <a href="#!">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-      
-              <!-- Card content -->
-              <div class="card-body card-body-cascade text-center">
-      
-                <!-- Title -->
-                <h4 class="card-title"><strong>{{p.name}}</strong></h4>
-                <p class="card-text">{{p.description}} </p>
-      
-                <!-- Price and rent button-->
-                <div>
-                  <hr>
-                  <div>
-                    <p><b>€{{p.costPerDay}}</b> /day</p>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#rentScreen" (click)="openModal(p) ">
-                      Rent
-                    </button>
-                  </div>
-                </div>
+  <div *ngIf="products" class="grid-container">
+    <!--Hier een Grid van maken-->
+    <div *ngFor="let p of availableProducts | productFilter: searchTerm  | paginate: {itemsPerPage: 12, currentPage: c }">
+      <div class="grid-item">
+        <div class="card card-cascade wider shadow" style=" width: 15rem; height: 450px;">
+          <!-- Card image -->
+          <div class="view view-cascade overlay" style="width: 100%; height: 14rem;">
+            <div class="inner">
+              <img class="card-img-top" src={{p.imageurl}} onerror="this.src='http://www.pngall.com/wp-content/uploads/2016/07/Tool.png'">
+            </div>
+            <a href="#!">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <!-- Card content -->
+          <div class="card-body card-body-cascade text-center">
+            <!-- Title -->
+            <h5 class="card-title"><strong>{{p.name}}</strong></h5>
+            <p class="card-text" style=" white-space: nowrap; overflow: hidden; text-overflow:ellipsis">{{p.description}}
+            </p>
+            <!-- Price and rent button-->
+            <div class="priceAndRent">
+              <hr>
+              <div>
+                <p><b>€{{p.costPerDay}}</b> /day</p>
+                <button *ngIf="authService.loggedIn()" type="button" class="btn btn-success" data-toggle="modal" data-target="#rentScreen" (click)="openModal(p)">
+                  Rent
+                </button>
               </div>
             </div>
           </div>
         </div>
-      
-        <!-- MODAL -->
+      </div>
+    </div>
+  </div>
+</div>
 
-        </div>
+<!--Pagination -->
 
-        <div *ngIf="activeProduct" class="modal" id="rentScreen">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content" style="width:400px; height:600px;">
-                <div class="pull-right" style="margin-top: 0;">
-                  <button type="button" class="close" data-dismiss="modal">
-                    <span>&times;</span>
-                  </button>
-                </div>
-  
-                <img  src={{activeProduct.imageurl}} alt="Image rent product" style="height:250px;">
-                <h2 class="modal-title text-center"><strong>{{activeProduct.name}}</strong></h2> 
-                <div class="modal-body">
-                  <div class="div">
-                    <div class="productDescription">
-                      {{activeProduct.description | slice:0:20 }}
-                    </div>
-                    <hr>
-                    <p style="float: left;">Price of product per day:</p>
-                    <p style="float: right;"> <b>€{{activeProduct.costPerDay}}</b>,- </p>
-                    <br><br>
-                    <p style="float: left;">Days you want to rent the product:</p>
-                    <input type="number" min="0" [(ngModel)]="inputNum" name="inputNum" style="width:40px; float:right;" />
-                    <br>
-                    <hr>
-                    <p style="float: left;">Total price:</p>
-                    <p style="float: right;"><b>€{{activeProduct.costPerDay * inputNum}}</b>,-</p>                  
-                  </div>
-                  <div class="div">
-                      <button type="button" class="btn btn-success" [disabled]="btnEnabled" data-dismiss="modal" style="width: 100%" value="Submit" (click)="onRentSubmit()">Rent</button>
-                    </div>
-                </div>
-           
-               
-              </div>
-            </div>
+<div class="div" style="padding-top: 23px">
+  <pagination-controls class="myPagination text-center" (pageChange)="c = $event" maxSize="4">
+  </pagination-controls>
+</div>
+
+
+<!-- MODAL -->
+
+<div *ngIf="activeProduct" class="modal" id="rentScreen">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="width:400px; height:600px;">
+      <div class="pull-right" style="margin-top: 0;">
+        <button type="button" class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <img src={{activeProduct.imageurl}} alt="Image rent product" style="height:250px;">
+      <h2 class="modal-title text-center"><strong>{{activeProduct.name}}</strong></h2>
+      <div class="modal-body">
+        <div class="div">
+          <div class="productDescription">
+            {{activeProduct.description | slice:0:20 }}
           </div>
-
- 
+          <hr>
+          <p style="float: left;">Price of product per day:</p>
+          <p style="float: right;"> <b>€{{activeProduct.costPerDay}}</b>,- </p>
+          <br><br>
+          <p style="float: left;">Days you want to rent the product:</p>
+          <input type="number" min="0" [(ngModel)]="inputNum" name="inputNum" style="width:40px; float:right;" />
+          <br>
+          <hr>
+          <p style="float: left;">Total price:</p>
+          <p style="float: right;"><b>€{{activeProduct.costPerDay * inputNum}}</b>,-</p>
+        </div>
+        <div class="div">
+          <button type="button" class="btn btn-success" [disabled]="btnEnabled" data-dismiss="modal" style="width: 100%"
+            value="Submit" (click)="onRentSubmit()">Rent</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -21,26 +21,26 @@ export class RentService {
   constructor(private _http : Http) { }
 
   getRents() {
-    return this._http.get(this.localUrl)
+    return this._http.get(this.deployUrl)
     .map(res=>res.json());
   }
   
   getRentById(_id:string) {
-   return this._http.get(this.localUrl + '/' + _id)
+   return this._http.get(this.deployUrl + '/' + _id)
    .map(res=>res.json());
   }
   
   addRent(new_rent){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this._http.post(this.localUrl, new_rent, {headers: headers})
+    return this._http.post(this.deployUrl, new_rent, {headers: headers})
     .map(res => res.json());
    }
 
   addRentToUser(rent, id:string){
    let headers = new Headers();
    headers.append('Content-Type','application/json');
-   return this._http.put(this.localUsersUrl + '/' + id, rent, {headers: headers})
+   return this._http.put(this.deployUsersUrl + '/' + id, rent, {headers: headers})
    .map(res => res.json());
   }
 
@@ -48,7 +48,7 @@ export class RentService {
 
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this._http.post(this.localUrl + '/' + _id, product, {headers: headers})
+    return this._http.post(this.deployUrl + '/' + _id, product, {headers: headers})
     .map(res => res.json());
   }
   
@@ -57,6 +57,6 @@ export class RentService {
   
      let headers = new Headers();
      headers.append('Content-Type','application/json');
-     return this._http.delete(this.localUrl + '/' + _id, {headers: headers})
+     return this._http.delete(this.deployUrl + '/' + _id, {headers: headers})
    }
 }
