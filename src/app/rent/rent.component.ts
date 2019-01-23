@@ -23,6 +23,8 @@ export class RentComponent implements OnInit {
 
   user_id: any;
 
+  c: number = 1;
+
   public searchTerm: string;
 
   constructor(private productService: ProductService, private authService: AuthService, private rentService: RentService, private flashMessage: FlashMessagesService, private router: Router) {
