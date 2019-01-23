@@ -1,0 +1,46 @@
+.background-container {
+    height: 100%;
+    width: 100%;
+    background-image: url(src\assets\img\pexels-photo-1029243.jpeg);
+    display: flex;
+    justify-content: center;
+    
+  }
+
+  .container {
+
+      margin: 0;
+      padding: 50px;
+      font-family: 'Abel', sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+  }
+  
+  .list-group{
+      color:white;
+      font-family: 'Abel', sans-serif;
+  }
+
+  .list-group-item{
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .profile-container {
+    font-family: 'Abel', sans-serif;
+    padding-bottom: 100px;
+  }
+
+
+
+  .table {
+    background-color: rgba(0, 0, 0, 0.5);
+    font-family: 'Abel', sans-serif;
+  }
+
+
+  .header-profile {
+      font-weight: bold;
+      text-decoration: underline;
+      padding-bottom:50px;
+      margin:0px;
+  }

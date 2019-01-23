@@ -1,0 +1,31 @@
+<div class="background-container">
+  <div class="container">
+    <h2 class="page-header">Add Loan</h2>
+    <form (submit)="onLoanSubmit()">
+      <div class="form-group">
+        <label>Product Name</label>
+        <select [(ngModel)]="name" name="name" class="form-control">
+          <option><span>- Select your Product -</span></option>
+          <option *ngFor="let p of catalogProducts">{{p.name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <input type="text" [(ngModel)]="category" name="category" class="form-control" placeholder="Fill in the product category..">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" [(ngModel)]="description" name="description" class="form-control" placeholder="Fill in the product description..">
+      </div>
+      <div class="form-group">
+        <label>Image</label>
+        <input [(ngModel)]="imageurl" name="imageurl" class="form-control" placeholder="Paste your image-url here..">
+      </div>
+      <div class="form-group">
+        <label>Cost per day</label>
+        <input type="number" [(ngModel)]="costPerDay" name="costPerDay" class="form-control" placeholder="Fill in the costs per day..">
+      </div>
+      <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+  </div>
+</div>
